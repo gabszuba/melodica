@@ -1,6 +1,5 @@
-import 'package:melodica/model/User.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:melodica/model/User.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,18 +9,11 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController userController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  String status = '';
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  @override
-  void initState() {
-    super.initState();
-    print("oi");
-    User.verificaUsuario().then((value) {
-      if (value != null) Navigator.pushNamed(context, '/tela');
-    });
-  }
+  bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +35,8 @@ class _LoginState extends State<Login> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            width: 310,
-            height: 450,
+            width: 320,
+            height: 455,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: const Color(0xffF8F3F3),
@@ -54,118 +46,142 @@ class _LoginState extends State<Login> {
               ),
             ),
             padding: const EdgeInsets.all(30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                const Text(
-                  'LOGIN',
-                  style: TextStyle(fontSize: 38, color: Color(0xFFEA5353)),
-                ),
-                const SizedBox(height: 40),
-                TextField(
-                  style: const TextStyle(fontSize: 16),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(10),
-                    hintText: 'Usuário',
-                    filled: true,
-                    fillColor: const Color(0xFFF0F0F0),
-                    hintStyle:
-                        const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
-                    prefixIcon: const Icon(
-                      Icons.person_2_outlined,
-                      color: Color(0xFFEA5353),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(3),
-                      borderSide:
-                          const BorderSide(color: Color(0xFF8A8A8A), width: 1),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
+                    'LOGIN',
+                    style: TextStyle(fontSize: 38, color: Color(0xFFEA5353)),
+                  ),
+                  const SizedBox(height: 30),
+                  TextFormField(
+                    controller: _userController,
+                    validator: (val) => val!.isEmpty
+                        ? 'Por favor, digite um nome de usuário.'
+                        : null,
+                    style: const TextStyle(fontSize: 16),
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(10),
+                      hintText: 'Usuário',
+                      filled: true,
+                      fillColor: const Color(0xFFF0F0F0),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFF8A8A8A), fontSize: 16),
+                      prefixIcon: const Icon(
+                        Icons.person_2_outlined,
+                        color: Color(0xFFEA5353),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: const BorderSide(
+                            color: Color(0xFF8A8A8A), width: 1),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                TextField(
-                  style: const TextStyle(fontSize: 16),
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(10),
-                    hintText: 'Senha',
-                    filled: true,
-                    fillColor: const Color(0xFFF0F0F0),
-                    hintStyle:
-                        const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: Color(0xFFEA5353),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(3),
-                      borderSide:
-                          const BorderSide(color: Color(0xFF8A8A8A), width: 1),
+                  const SizedBox(height: 12),
+                  TextFormField(
+                    controller: _passwordController,
+                    validator: (val) =>
+                        val!.isEmpty ? 'Por favor, digite sua senha.' : null,
+                    style: const TextStyle(fontSize: 16),
+                    obscureText: !_passwordVisible,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(10),
+                      hintText: 'Senha',
+                      filled: true,
+                      fillColor: const Color(0xFFF0F0F0),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFF8A8A8A), fontSize: 16),
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: Color(0xFFEA5353),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: const Color.fromARGB(205, 28, 26, 26),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: const BorderSide(
+                            color: Color(0xFF8A8A8A), width: 1),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Esqueceu sua senha?',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFFEA5353),
-                      decoration: TextDecoration.underline,
-                      decorationColor: Color(0xFFEA5353),
+                  const SizedBox(height: 8),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Esqueceu sua senha?',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFFEA5353),
+                        decoration: TextDecoration.underline,
+                        decorationColor: Color(0xFFEA5353),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  status,
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 255, 17, 0), fontSize: 16),
-                ),
-                const SizedBox(height: 14),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFEA5353),
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontFamily: 'Hammersmith One'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 14),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFEA5353),
+                      foregroundColor: Colors.white,
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontFamily: 'Hammersmith One'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      minimumSize: const Size(150, 40),
                     ),
-                    minimumSize: const Size(120, 40),
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        String username = _userController.text;
+                        String password = _passwordController.text;
+                        User? loggedInUser =
+                            await User.logUser(username, password);
+                        if (loggedInUser != null) {
+                          print("Sucesso");
+                          //Navigator.pushNamed(context, '/home');
+                        } else {
+                          print("Erro ao logar");
+                        }
+                      }
+                    },
+                    child: const Text('Entrar'),
                   ),
-                  onPressed: () {
-                    String username = userController.text;
-                    String password = passwordController.text;
-                    String dataFormatada = DateFormat('dd-MM-yyyy - kk:mm').format(DateTime.now());
-                    User newUser = User(username, password, dataFormatada);
-                    // ignore: avoid_print
-                    print(newUser);
-                  },
-                  child: const Text('Entrar'),
-                ),
-                const SizedBox(height: 8),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFFEA5353),
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontFamily: 'Hammersmith One'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      side:
-                          const BorderSide(color: Color(0xFFEA5353), width: 1),
+                  const SizedBox(height: 8),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color(0xFFEA5353),
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontFamily: 'Hammersmith One'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(
+                            color: Color(0xFFEA5353), width: 1),
+                      ),
+                      minimumSize: const Size(150, 40),
                     ),
-                    minimumSize: const Size(120, 40),
+                    onPressed: () {
+                      criarUser();//Navigator.pushNamed(context, '');
+                    },
+                    child: const Text('Cadastrar'),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/tela2');
-                  },
-                  child: const Text('Cadastrar'),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -175,6 +191,24 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+
+
+  void criarUser() async {
+    // User de teste
+    User testUser = User(
+      username: 'test_user',
+      email: 'test@example.com',
+      password: 'test_password',
+      lastLogin: DateTime.now().toString(),
+    );
+
+    int result = await testUser.insertUser();
+    if (result != -1) {
+      print('User criado com sucesso!');
+    } else {
+      print('Erro criando o user.');
+    }
   }
 
   Widget _icon() {
