@@ -12,19 +12,13 @@ class _LoginState extends State<Login> {
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Color(0xFFF5EFEF),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: _body(),
-      ),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5EFEF),
+      body: _body(),
     );
   }
 
@@ -36,7 +30,7 @@ class _LoginState extends State<Login> {
         children: [
           Container(
             width: 320,
-            height: 455,
+            height: 500,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: const Color(0xffF8F3F3),
@@ -147,16 +141,16 @@ class _LoginState extends State<Login> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        String username = _userController.text;
-                        String password = _passwordController.text;
-                        User? loggedInUser =
-                            await User.logUser(username, password);
-                        if (loggedInUser != null) {
-                          print("Sucesso");
-                          //Navigator.pushNamed(context, '/home');
-                        } else {
-                          print("Erro ao logar");
-                        }
+                        // String username = _userController.text;
+                        // String password = _passwordController.text;
+                        // User? loggedInUser =
+                        //     await User.logUser(username, password);
+                        // if (loggedInUser != null) {
+                        //   print("Sucesso");
+                          Navigator.pushNamed(context, '/home');
+                        // } else {
+                        //   print("Erro ao logar");
+                        // }
                       }
                     },
                     child: const Text('Entrar'),
@@ -176,7 +170,7 @@ class _LoginState extends State<Login> {
                       minimumSize: const Size(150, 40),
                     ),
                     onPressed: () {
-                      criarUser();//Navigator.pushNamed(context, '');
+                      Navigator.pushNamed(context, '/signup');
                     },
                     child: const Text('Cadastrar'),
                   ),
@@ -191,24 +185,6 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
-  }
-
-
-  void criarUser() async {
-    // User de teste
-    User testUser = User(
-      username: 'test_user',
-      email: 'test@example.com',
-      password: 'test_password',
-      lastLogin: DateTime.now().toString(),
-    );
-
-    int result = await testUser.insertUser();
-    if (result != -1) {
-      print('User criado com sucesso!');
-    } else {
-      print('Erro criando o user.');
-    }
   }
 
   Widget _icon() {

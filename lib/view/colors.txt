@@ -1,0 +1,20 @@
+Rosa escuro: Color(0xFFEA5353)
+Azul escuro: Color(0xFF02002F)
+Rosa claro: Color(0xFFF5EFEF)
+Página selecionada (roxo): Color(0xFF4F1B4B)
+
+
+    // User de teste
+    User testUser = User(
+      username: 'test_user',
+      email: 'test@example.com',
+      password: 'test_password',
+      lastLogin: DateTime.now().toString(),
+    );
+
+    int result = await testUser.insertUser();
+    if (result != -1) {
+      print('User criado com sucesso!');
+    } else {
+      print('Erro criando o user.');
+    }
