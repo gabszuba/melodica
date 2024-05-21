@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:melodica/model/User.dart';
 
 class Login extends StatefulWidget {
@@ -13,6 +14,7 @@ class _LoginState extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
+  int logoSize = 110;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +47,11 @@ class _LoginState extends State<Login> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
                   const Text(
                     'LOGIN',
                     style: TextStyle(fontSize: 38, color: Color(0xFFEA5353)),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: _userController,
                     validator: (val) => val!.isEmpty
@@ -179,22 +180,29 @@ class _LoginState extends State<Login> {
             ),
           ),
           Positioned(
-            top: -50,
-            child: _icon(),
+            top: -(logoSize / 2),
+            child: _icon(logoSize),
           ),
         ],
       ),
     );
   }
 
-  Widget _icon() {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: Color(0xffea5353),
+Widget _icon(logoSize) {
+  return Container(
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      color: Color(0xffea5353),
+    ),
+    width: logoSize, 
+    height: logoSize,
+    child: Center(
+      child: SvgPicture.asset(
+        'logo.svg',
+        semanticsLabel: 'Logo do Melodica',
+        width: 70, 
+        height: 70, 
       ),
-      width: 100,
-      child: const Image(image: AssetImage('assets/logo.png')),
-    );
-  }
-}
+    ),
+  );
+}}

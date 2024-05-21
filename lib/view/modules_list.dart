@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:melodica/view/instruments.dart';
+import 'package:melodica/view/music_theory.dart';
 
 class ModulesList extends StatefulWidget {
   const ModulesList({super.key});
@@ -17,17 +18,24 @@ class _ModulesListState extends State<ModulesList>
   Widget build(BuildContext context) {
     _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
-      body: Container(
+        body: Column(children: [
+      Container(
           height: 200,
           child: Stack(
             children: [_bgBar(), _topBarContent()],
           )),
-    );
+      Expanded(
+        child: TabBarView(
+          controller: _tabController,
+          children: [MusicTheoryTab(), InstrumentTab()],
+        ),
+      )
+    ]));
   }
 
   Widget _topBarContent() {
-    return Container(
-      padding: EdgeInsets.all(24),
+    return Padding(
+      padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -40,9 +48,9 @@ class _ModulesListState extends State<ModulesList>
             alignment: Alignment.bottomCenter,
             child: TabBar(
               labelStyle:
-                  TextStyle(fontSize: 16, fontFamily: 'Hammersmith One'),
+                  const TextStyle(fontSize: 16, fontFamily: 'Hammersmith One'),
               labelColor: Colors.white,
-              unselectedLabelColor: Color(0xFFFFE0E0),
+              unselectedLabelColor: const Color(0xFFFFE0E0),
               dividerColor: Colors.transparent,
               indicatorColor: Colors.white,
               controller: _tabController,

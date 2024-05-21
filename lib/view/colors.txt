@@ -1,6 +1,7 @@
 Rosa escuro: Color(0xFFEA5353)
 Azul escuro: Color(0xFF02002F)
 Rosa claro: Color(0xFFF5EFEF)
+Cinza Botões perfil: Color.fromARGB(255, 217, 217, 217)
 Página selecionada (roxo): Color(0xFF4F1B4B)
 
 

@@ -43,7 +43,7 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(fontSize: 16),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10),
-                    hintText: 'Username',
+                    hintText: 'Nome de usuário',
                     filled: true,
                     fillColor: Color(0xFFF0F0F0),
                     hintStyle:
