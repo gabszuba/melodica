@@ -29,7 +29,7 @@ class Welcome extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: const Size(248, 52),
-                backgroundColor: Color(0xFF02002F),
+                backgroundColor: const Color(0xFF02002F),
                 foregroundColor: Colors.white,
                 textStyle: const TextStyle(
                   fontSize: 18,

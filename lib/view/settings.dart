@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -11,13 +10,13 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   final TextEditingController _passwordController = TextEditingController();
   bool _passwordVisible = false;
-  bool _newpasswordVisible = false;
+  final bool _newpasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5EFEF),
+        backgroundColor: const Color(0xFFF5EFEF),
       ),
       body: _body(),
     );
@@ -25,7 +24,7 @@ class _SettingsState extends State<Settings> {
 
   Widget _body() {
     return Container(
-      decoration: BoxDecoration(color: Color(0xFFF5EFEF)),
+      decoration: const BoxDecoration(color: Color(0xFFF5EFEF)),
       padding: const EdgeInsets.all(28),
       child: Column(
         children: [
@@ -40,19 +39,19 @@ class _SettingsState extends State<Settings> {
   Widget _personalInformation() {
     return Container(
       child: Column(children: [
-        Text(
+        const Text(
           'Altere seus dados pessoais',
           style: TextStyle(color: Color(0xFF02002F), fontSize: 20),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         TextFormField(
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(10),
             hintText: 'Nome de usuário',
             filled: true,
-            fillColor: Color(0xFFF0F0F0),
-            hintStyle: TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
+            fillColor: const Color(0xFFF0F0F0),
+            hintStyle: const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: Color(0xFF8A8A8A), width: 1),
@@ -61,31 +60,31 @@ class _SettingsState extends State<Settings> {
         ),
         const SizedBox(height: 12),
         TextFormField(
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(10),
             hintText: 'Email',
             filled: true,
-            fillColor: Color(0xFFF0F0F0),
-            hintStyle: TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
+            fillColor: const Color(0xFFF0F0F0),
+            hintStyle: const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: Color(0xFF8A8A8A), width: 1),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Align(
           alignment: Alignment.centerRight,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 217, 217, 217),
+              backgroundColor: const Color.fromARGB(255, 217, 217, 217),
               foregroundColor: const Color.fromARGB(255, 34, 34, 34),
               padding: const EdgeInsets.all(16),
             ),
-            child: Text(
+            child: const Text(
               'Salvar alterações',
               style: TextStyle(fontSize: 12, fontFamily: 'Hammersmith One'),
             ),
@@ -99,11 +98,11 @@ class _SettingsState extends State<Settings> {
   Widget _changePassword() {
     return Container(
       child: Column(children: [
-        Text(
+        const Text(
           'Altere sua senha',
           style: TextStyle(color: Color(0xFF02002F), fontSize: 20),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         TextFormField(
           controller: _passwordController,
           validator: (val) =>
@@ -163,16 +162,16 @@ class _SettingsState extends State<Settings> {
             ),
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Align(
           alignment: Alignment.centerRight,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 217, 217, 217),
+              backgroundColor: const Color.fromARGB(255, 217, 217, 217),
               foregroundColor: const Color.fromARGB(255, 34, 34, 34),
               padding: const EdgeInsets.all(16),
             ),
-            child: Text(
+            child: const Text(
               'Salvar alterações',
               style: TextStyle(fontSize: 12, fontFamily: 'Hammersmith One'),
             ),

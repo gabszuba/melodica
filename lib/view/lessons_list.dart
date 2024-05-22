@@ -14,9 +14,9 @@ class _LessonsListState extends State<LessonsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5EFEF),
+        backgroundColor: const Color(0xFFF5EFEF),
       ),
-      backgroundColor: Color(0xFFF5EFEF),
+      backgroundColor: const Color(0xFFF5EFEF),
       body: Container(
         child: ListView(
           scrollDirection: Axis.vertical,
@@ -33,7 +33,7 @@ class _LessonsListState extends State<LessonsList> {
     return Container(
       width: double.infinity,
       height: 180,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Stack(
         children: [
           Positioned(
@@ -52,17 +52,17 @@ class _LessonsListState extends State<LessonsList> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Título do Módulo',
                     style: TextStyle(color: Color(0xFF02002F), fontSize: 24),
                   ),
                   const SizedBox(height: 6),
-                  Text('Descrição do módulo',
+                  const Text('Descrição do módulo',
                       style: TextStyle(
                           color: Color.fromRGBO(88, 86, 119, 1),
                           fontSize: 12)),
                   const SizedBox(height: 16),
-                  Wrap(
+                  const Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Icon(Icons.access_alarm_rounded, color: Color(0xFF02002F), size: 18),
@@ -103,29 +103,29 @@ class _LessonsListState extends State<LessonsList> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Row(
               children: <Widget>[
                 SizedBox(width: 60, height: 60, child: SvgPicture.asset(svg),),
-                SizedBox(width: 6,),
+                const SizedBox(width: 6,),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(title,
-                          style: TextStyle(color: Color(0xFF030047), fontSize: 16)),
-                      SizedBox(height: 4),
+                          style: const TextStyle(color: Color(0xFF030047), fontSize: 16)),
+                      const SizedBox(height: 4),
                       GFProgressBar(
                         percentage: progress,
                         lineHeight: 12,
                         alignment: MainAxisAlignment.spaceBetween,
+                        backgroundColor: Colors.black12,
+                        progressBarColor: const Color(0xFF030047),
                         child: Text(
                           '${(progress * 100).toInt()}%',
                           textAlign: TextAlign.end,
-                          style: TextStyle(fontSize: 9, color: Color(0xFF030047)),
+                          style: const TextStyle(fontSize: 9, color: Color(0xFF030047)),
                         ),
-                        backgroundColor: Colors.black12,
-                        progressBarColor: Color(0xFF030047),
                       ),
                     ],
                   ),

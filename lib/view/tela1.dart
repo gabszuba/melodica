@@ -1,4 +1,3 @@
-import 'package:melodica/model/user.dart';
 import 'package:flutter/material.dart';
 
 class Tela1 extends StatefulWidget {

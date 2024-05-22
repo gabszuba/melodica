@@ -10,6 +10,6 @@ class InstrumentTab extends StatefulWidget {
 class _InstrumentTabState extends State<InstrumentTab> {
   @override
   Widget build(BuildContext context) {
-    return Text("Instrumentos");
+    return const Text("Instrumentos");
   }
 }

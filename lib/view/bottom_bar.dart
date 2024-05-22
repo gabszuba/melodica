@@ -12,9 +12,9 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   final List<Widget> _screens = [
-    HomePage(),
-    ModulesList(),
-    Profile(),
+    const HomePage(),
+    const ModulesList(),
+    const Profile(),
   ];
   int currentPageIndex = 0;
   @override

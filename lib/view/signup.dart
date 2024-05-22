@@ -30,7 +30,7 @@ class _SignUpState extends State<SignUp> {
       child: Form(
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 52, vertical: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,15 +40,15 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 28),
                 TextFormField(
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10),
+                    contentPadding: const EdgeInsets.all(10),
                     hintText: 'Nome de usuário',
                     filled: true,
-                    fillColor: Color(0xFFF0F0F0),
+                    fillColor: const Color(0xFFF0F0F0),
                     hintStyle:
-                        TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
-                    prefixIcon: Icon(
+                        const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
+                    prefixIcon: const Icon(
                       Icons.person_outline,
                       color: Color(0xFFEA5353),
                     ),
@@ -61,15 +61,15 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10),
+                    contentPadding: const EdgeInsets.all(10),
                     hintText: 'Email',
                     filled: true,
-                    fillColor: Color(0xFFF0F0F0),
+                    fillColor: const Color(0xFFF0F0F0),
                     hintStyle:
-                        TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
-                    prefixIcon: Icon(
+                        const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
+                    prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: Color(0xFFEA5353),
                     ),
@@ -121,22 +121,22 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(height: 12),
                 TextFormField(
                   obscureText: _confirmPasswordVisible,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10),
+                    contentPadding: const EdgeInsets.all(10),
                     hintText: 'Confirme sua senha',
                     filled: true,
-                    fillColor: Color(0xFFF0F0F0),
+                    fillColor: const Color(0xFFF0F0F0),
                     hintStyle:
-                        TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
-                    prefixIcon: Icon(
+                        const TextStyle(color: Color(0xFF8A8A8A), fontSize: 16),
+                    prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: Color(0xFFEA5353),
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide:
-                          BorderSide(color: Color(0xFF8A8A8A), width: 1),
+                          const BorderSide(color: Color(0xFF8A8A8A), width: 1),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(

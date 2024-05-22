@@ -21,15 +21,14 @@ class Main extends StatelessWidget {
       title: "Melodica",
       theme: ThemeData(fontFamily: 'Hammersmith One'),
       routes: {
-        '/': (context) => Welcome(),
-        '/login': (context) => Login(),
-        '/profile': (context) => Profile(),
-        '/signup': (context) => SignUp(),
-        '/home': (context) => BottomBar(),
-        '/modules': (context) => ModulesList(),
+        '/': (context) => const Welcome(),
+        '/login': (context) => const Login(),
+        '/profile': (context) => const Profile(),
         '/signup': (context) => const SignUp(),
-        '/classes': (context) => LessonsList(),
-        '/setting': (context) => Settings(),
+        '/home': (context) => const BottomBar(),
+        '/modules': (context) => const ModulesList(),
+        '/classes': (context) => const LessonsList(),
+        '/setting': (context) => const Settings(),
       },
     );
   }

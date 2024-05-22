@@ -19,7 +19,7 @@ class _ModulesListState extends State<ModulesList>
     _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
         body: Column(children: [
-      Container(
+      SizedBox(
           height: 200,
           child: Stack(
             children: [_bgBar(), _topBarContent()],
@@ -27,7 +27,7 @@ class _ModulesListState extends State<ModulesList>
       Expanded(
         child: TabBarView(
           controller: _tabController,
-          children: [MusicTheoryTab(), InstrumentTab()],
+          children: const [MusicTheoryTab(), InstrumentTab()],
         ),
       )
     ]));
@@ -54,7 +54,7 @@ class _ModulesListState extends State<ModulesList>
               dividerColor: Colors.transparent,
               indicatorColor: Colors.white,
               controller: _tabController,
-              tabs: <Widget>[
+              tabs: const <Widget>[
                 Tab(
                   text: 'Teoria Musical',
                 ),

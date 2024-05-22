@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:melodica/model/User.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
